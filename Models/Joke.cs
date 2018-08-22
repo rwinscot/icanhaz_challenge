@@ -17,7 +17,7 @@ namespace WebApplication
         public string id { get; set; }
         public string joke { get; set; }
         public int WordCount { get; set; }
-
+        public string WordCountCategory { get; set; }
 
         // Not sure how we can use this... exclude for now.
 
