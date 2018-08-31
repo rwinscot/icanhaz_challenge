@@ -36,8 +36,8 @@ namespace WebApplication.Controllers
             var jokeSearch = JObject.Parse(json.Content);
 
             // Extract internal joke results to top-level array.
-            IList<JToken> results = jokeSearch["results"].Children().ToList();
-            IList<Joke> jokes = new List<Joke>();
+            var results = jokeSearch["results"].Children().ToList();
+            var jokes = new List<Joke>();
             foreach (var result in results)
             {
                 var obj = result.ToObject<Joke>();

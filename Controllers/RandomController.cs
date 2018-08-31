@@ -30,7 +30,7 @@ namespace WebApplication.Controllers
             var json = client.Execute(request);
             
             // Churn single result into an array... so that we can consolidate presentation.
-            IList<Joke> results = new List<Joke>();
+            var results = new List<Joke>();
             
             // TODO: Is this a joke? It had better be...
             var obj = JsonConvert.DeserializeObject<Joke>(json.Content);
