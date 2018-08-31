@@ -39,9 +39,11 @@ namespace WebApplication.Controllers
             var wordz = Regex.Matches(WebUtility.UrlDecode(obj.joke), @"[\S]+");
             obj.WordCount = wordz.Count;
             
-            // Add to IList and convert to JSON.
+            // Random and Search result as an array - so that clients can consume either with
+            // similar approach.
             results.Add(obj);
-            return Json(results.ToList());
+            
+            return Json(results);
         }        
         
     }

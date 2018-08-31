@@ -66,7 +66,7 @@ namespace WebApplication.Controllers
             // Ideally, a word-count is something that should be stated in the DB record for
             // accuracy and included as part of the query... ORDER BY.
 
-            return Json(jokes.OrderBy(j => j.WordCount).ToList());
+            return Json(jokes.OrderBy(j => j.WordCount));
         }
     }
 }
