@@ -26,8 +26,9 @@ namespace WebApplication.Controllers
             var client = new RestClient {BaseUrl = new Uri("https://icanhazdadjoke.com")};
             var request = new RestRequest {Resource = "/search"};
 
-            // Querystring without 'term' present will return a blank array. If present, 
-            // but blank, it will return a maximum of thirty items.  
+            // STRANGE: Querystring without 'term' present will return a blank array. 
+            // If present, but blank, it will return a maximum of thirty items. Consider
+            // param as required.
             request.AddParameter("term", term);
             request.AddParameter("limit", "30");
 
@@ -35,7 +36,8 @@ namespace WebApplication.Controllers
             var json = client.Execute(request);
             var jokeSearch = JObject.Parse(json.Content);
 
-            // Extract internal joke results to top-level array.
+            // Needs unit tests around the service to make sure that JSON hasn't 
+            // changed. If it has, this will likely break.
             var results = jokeSearch["results"].Children().ToList();
             var jokes = new List<Joke>();
             foreach (var result in results)
